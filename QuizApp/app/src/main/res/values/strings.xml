@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="title">Quiz</string>
+    <string name="info">Do you know all the worlds capitals?</string>
+    <string name="startQuiz">Start quiz</string>
+    <string name="resetScore">reset highscore</string>
+    <string name="resetAnswer">reset saved answers</string>
+    <string name="previousButton">Previous Question</string>
+    <string name="nextButton">next Question</string>
+    <string name="submitButton">Submit Answers</string>
+    <string name="dontKnow">I dont know</string>
+    <string name="backToMenu">Back to Menu</string>
+    <string name="submitConfirmTitle">Confirm Submission</string>
+    <string name="submitConfirmMessage">Are you sure?</string>
+    <string name="resetAnsConfirmTitle">Reset saved answers</string>
+    <string name="resetAnsConfirmMessage">Really reset your saved answers</string>
+    <string name="resetHighConfirmTitle">Reset highscore</string>
+    <string name="resetHighConfirmMessage">Really reset the highscore?</string>
+    <string name="resetHighscoreBtn">Reset highscore</string>
+    <string name="correct">Correct</string>
+    <string name="newHighscore">New Highscore!</string>
+    <string name="resultsDesc">Individual question results:</string>
+
+
+    <string name="resultsTitle" formatted="false">Score: %.1f%%</string>
+    <string name="highscore" formatted="false">Highscore: %.1f%%</string>
+    <string name="questionNumber" formatted="false">Question: %d/%d</string>
+    <string name="questionNumberSingel" formatted="false">Question %d</string>
+    <string name="youAnswered" formatted="false">You answered: %s</string>
+    <string name="incorrect" formatted="false">Correct answer: %s</string>
+
+
+    <string-array name="q1">
+        <item>What is the capital of France?</item>
+        <item>ORLEANS</item>
+        <item>London</item>
+        <item>Paris</item>
+        <item>Lissabon</item>
+        <item>opt3</item>
+    </string-array>
+
+    <string-array name="q2">
+        <item>What is the capital of Australia</item>
+        <item>Sydney</item>
+        <item>Canberra</item>
+        <item>Perth</item>
+        <item>Brisbane</item>
+        <item>opt2</item>
+    </string-array>
+
+    <string-array name="q3">
+        <item>What is the capital of Iran</item>
+        <item>Baghdad</item>
+        <item>Babylon</item>
+        <item>Teheran</item>
+        <item>Samarkand</item>
+        <item>opt3</item>
+    </string-array>
+
+    <string-array name="q4">
+        <item>What is the capital of Estonia</item>
+        <item>Tallinn</item>
+        <item>Tartu</item>
+        <item>Pärnu</item>
+        <item>Narva</item>
+        <item>opt1</item>
+    </string-array>
+
+    <string-array name="q5">
+        <item>What is the capital of USA?</item>
+        <item>Piladelphia</item>
+        <item>Baltimore</item>
+        <item>New York</item>
+        <item>Washington DC</item>
+        <item>opt4</item>
+    </string-array>
+
+    <string-array name="q6">
+        <item>What is the capital of Canada?</item>
+        <item>Ottawa</item>
+        <item>Toronto</item>
+        <item>Alberta</item>
+        <item>Victoria</item>
+        <item>opt1</item>
+    </string-array>
+
+    <array name="questions">
+        <item>@array/q1</item>
+        <item>@array/q2</item>
+        <item>@array/q3</item>
+        <item>@array/q4</item>
+        <item>@array/q5</item>
+        <item>@array/q6</item>
+    </array>
+
+
+</resources>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">PhoneBook</string>
+    <string name="eCode">Enter zipcode</string>
+    <string name="eCity">Enter city</string>
+    <string name="clr">clear</string>
+    <string name="src">search</string>
+    <string name="crt">Create contact</string>
+    <string name="shw">Display contacts</string>
+    <string name="srch">Search contacts</string>
+    <string name="ntf">No contacts found</string>
+    <string name="fname">First name:</string>
+    <string name="lname">Last name:</string>
+    <string name="addr">Address:</string>
+    <string name="tit">Title:</string>
+    <string name="mfn">First name(*):</string>
+    <string name="zp">Zipcode:</string>
+    <string name="ph">Phone:</string>
+    <string name="em">Email:</string>
+    <string name="dt">Date:</string>
+    <string name="ok">OK</string>
+    <string name="rmv">remove</string>
+    <string name="mst">Must fill</string>
+    <string name="Description">Description</string>
+</resources>

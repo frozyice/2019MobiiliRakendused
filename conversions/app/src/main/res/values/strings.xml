@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Conversion</string>
+    <string name="msg">Enter a value</string>
+    <string name="miles">miles to kilometers</string>
+    <string name="kilometers">kilometers to miles</string>
+    <string name="clear">clear</string>
+    <string name="convert">convert</string>
+    <string name="toast">Please enter value!</string>
+</resources>

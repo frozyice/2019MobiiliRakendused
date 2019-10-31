@@ -1,0 +1,65 @@
+<regents>
+  <regent name="Offa" to="796"/>
+  <regent name="Egbert" from="802" to="839"/>
+  <regent name="Aethelwulf" from="839" to="856"/>
+  <regent name="Aethelbald" from="856" to="860"/>
+  <regent name="Aethelbert" from="860" to="866"/>
+  <regent name="Aethelred I" from="866" to="871"/>
+  <regent name="Alfred the Great" from="871" to="899"/>
+  <regent name="Edward the Elder" from="899" to="925"/>
+  <regent name="Athelstan" from="925" to="940"/>
+  <regent name="Edmund" from="940" to="946"/>
+  <regent name="Edred" from="946" to="955"/>
+  <regent name="Edwy" from="955" to="959"/>
+  <regent name="Edgar" from="959" to="975"/>
+  <regent name="Edward the Martyr" from="975" to="978"/>
+  <regent name="Ethelred II the Unready" from="978" to="1016"/>
+  <regent name="Edmund lronside" from="1016" to="1016"/>
+  <regent name="Cnut (Canute)" from="1016" to="1035"/>
+  <regent name="Harold I Harefoot" from="1035" to="1040"/>
+  <regent name="Harthacanut}" from="1040" to="1042"/>
+  <regent name="Edward the Confessor" from="1042" to="1066"/>
+  <regent name="Harold II" from="1066" to="1066"/>
+  <regent name="William I" from="1066" to="1087"/>
+  <regent name="William II" from="1087" to="1100"/>
+  <regent name="Henry I" from="1100" to="1135"/>
+  <regent name="Stephen" rom="1135" to="1154"/>
+  <regent name="Henry II" from="1154" to="1189"/>
+  <regent name="Richard I" from="1189" to="1199"/>
+  <regent name="John" from="1199" to="1216"/>
+  <regent name="Henry III" from="1216" to="1272"/>
+  <regent name="Edward I" from="1272" to="1307"/>
+  <regent name="Edward II" from="1307" to="1327"/>
+  <regent name="Edward III" from="13327" to="1377"/>
+  <regent name="Richard II" from="1377" to="1399"/>
+  <regent name="Henry IV" from="1399" to="1413"/>
+  <regent name="Henry V" from="1413" to="1422"/>
+  <regent name="Henry VI" from="1422" to="1461"/>
+  <regent name="Edward IV" from="1461" to="1483"/>
+  <regent name="Edward V" from="1483" to="1483"/>
+  <regent name="Richard III" from="1483" to="1485"/>
+  <regent name="Henry VII" from="1485" to="1509"/>
+  <regent name="Henry VIII" from="1509" to="1547"/>
+  <regent name="Edward VI" from="1547" to="1553"/>
+  <regent name="Mary I" from="1553" to="1558"/>
+  <regent name="Elizabeth I" from="1558" to="1603"/>
+  <regent name="James I" from="1603" to="1625"/>
+  <regent name="Charles I" from="1625" to="1649"/>
+  <regent name="Commonwealth" from="1649" to="1653"/>
+  <regent name="Oliver Cromwell" from="1653" to="1658"/>
+  <regent name="Richard Cromwell" from="1658" to="1659"/>
+  <regent name="Charles II" from="1660" to="1685"/>
+  <regent name="James II" from="1685" to="1688"/>
+  <regent name="Anne" from="1705" to="1714"/>
+  <regent name="George I" from="1714" to="1727"/>
+  <regent name="George II" from="1727" to="1760"/>
+  <regent name="George III" from="1760" to="1820"/>
+  <regent name="George IV" from="1820" to="1830"/>
+  <regent name="William IV" from="1830" to="1837"/>
+  <regent name="Victoria" from="1837" to="1901"/>
+  <regent name="Edward VII" from="1901" to="1910"/>
+  <regent name="George V" from="1910" to="1936"/>
+  <regent name="Edward VIII" from="1936" to="1936"/>
+  <regent name="George VI" from="1936" to="1952"/>
+  <regent name="Elizabeth II" from="1952"/>
+</regents>

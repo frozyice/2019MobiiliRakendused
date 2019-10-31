@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Fuel Calculator</string>
+    <string name="textGasCalcApp">textGasCalcApp</string>
+    <string name="textTripDis">trip distance</string>
+    <string name="textFuelEco">fuel efficiency</string>
+    <string name="textFuelPrice">fuel price</string>
+    <string name="textPeople">no. of people</string>
+    <string name="textFuelUsed">fuel used</string>
+    <string name="textCost">cost</string>
+    <string name="textCostperPerson">cost per person</string>
+    <string name="btnCalculate">calculate</string>
+    <string name="money">€</string>
+    <string name="distance">km</string>
+    <string name="eco">L/100km</string>
+    <string name="fuel">L</string>
+    <string name="btnClear">clear</string>
+</resources>

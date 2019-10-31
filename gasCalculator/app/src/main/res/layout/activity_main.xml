@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="calc"
+        android:text="@string/btnCalculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPeople" />
+
+    <EditText
+        android:id="@+id/editTripDis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="9dp"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/unitFuelEco"
+        app:layout_constraintEnd_toStartOf="@+id/unitTripDis"
+        app:layout_constraintStart_toEndOf="@+id/textTripDis" />
+
+    <EditText
+        android:id="@+id/editFuelEco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editTripDis"
+        app:layout_constraintTop_toBottomOf="@+id/editTripDis" />
+
+    <EditText
+        android:id="@+id/editFuelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ems="5"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editFuelEco"
+        app:layout_constraintTop_toBottomOf="@+id/editFuelEco" />
+
+    <EditText
+        android:id="@+id/editPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ems="5"
+        android:hint="(optional)"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editFuelPrice"
+        app:layout_constraintTop_toBottomOf="@+id/editFuelPrice" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="429dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/fuel"
+        app:layout_constraintBottom_toTopOf="@+id/textTripDis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/unitCostperPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:text="@string/money"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editCostperPerson"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/unitFuelEco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:text="@string/eco"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textFuelEco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textFuelEco" />
+
+    <TextView
+        android:id="@+id/textTripDis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="193dp"
+        android:layout_marginEnd="69dp"
+        android:text="@string/textTripDis"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTripDis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textFuelEco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/textFuelEco"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTripDis" />
+
+    <TextView
+        android:id="@+id/textFuelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/textFuelPrice"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFuelEco" />
+
+    <TextView
+        android:id="@+id/textFuelUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/textFuelUsed"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalculate" />
+
+    <TextView
+        android:id="@+id/editFuelUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+
+        android:layout_marginEnd="11dp"
+        android:ems="5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/unitFuelUsed"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalculate" />
+
+    <TextView
+        android:id="@+id/textCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/textCost"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFuelUsed" />
+
+    <TextView
+        android:id="@+id/editCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="11dp"
+        android:ems="5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/unitCost"
+        app:layout_constraintTop_toBottomOf="@+id/editFuelUsed" />
+
+    <TextView
+        android:id="@+id/textPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/textPeople"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFuelPrice" />
+
+    <TextView
+        android:id="@+id/editCostperPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="11dp"
+        android:ems="5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/unitCostperPerson"
+        app:layout_constraintTop_toBottomOf="@+id/editCost" />
+
+    <TextView
+        android:id="@+id/textCostperPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/textCostperPerson"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editCostperPerson"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/unitTripDis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:text="@string/distance"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTripDis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTripDis" />
+
+    <TextView
+        android:id="@+id/unitPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editPeople"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/unitFuelUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:text="@string/fuel"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editFuelUsed"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/unitCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:text="@string/money"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editCost"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+        android:id="@+id/unitFuelPrice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="4"
+        android:text="@string/money"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editFuelPrice"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

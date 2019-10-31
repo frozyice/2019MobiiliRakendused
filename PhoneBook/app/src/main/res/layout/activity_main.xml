@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context="com.nagel.phonebook.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/editTxtFields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/eCode"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColorHint="@android:color/holo_red_dark" />
+
+        <EditText
+            android:id="@+id/etCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/eCity"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColorHint="@android:color/holo_red_dark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnFields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnOk"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onSearch"
+            android:text="@string/src" />
+
+        <Button
+            android:id="@+id/btnClear"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClear"
+            android:text="@string/clr"
+            android:textColor="@android:color/holo_red_dark" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lstCodes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

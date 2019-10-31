@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info" />
+
+    <TextView
+        android:id="@+id/txtHighScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscore" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onStart"
+        android:text="@string/startQuiz" />
+
+    <Button
+        android:id="@+id/btnResetScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onResetScore"
+        android:text="@string/resetScore" />
+
+    <Button
+        android:id="@+id/btnResetAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onResetAnswer"
+        android:text="@string/resetAnswer" />
+</LinearLayout>
