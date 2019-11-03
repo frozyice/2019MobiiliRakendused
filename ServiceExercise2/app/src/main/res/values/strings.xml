@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ServiceExercise2</string>
+    <string name="startService">start service</string>
+    <string name="changeColor">change color</string>
+</resources>
