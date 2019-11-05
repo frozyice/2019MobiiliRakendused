@@ -2,17 +2,16 @@ package com.frozyice.serviceexercise1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private TimeService service;
+    private char c = 'e';
 
 
 
@@ -22,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         service = new TimeService();
+        String string = "We test coders. Give us a try";
+
+       String sentence = "dajadsdjd aksljsfdalk ";
+       int length = sentence.length();
+
+       Arrays.sort(a);
+
+
+
+
+
     }
 
     public void StartService(View view) {

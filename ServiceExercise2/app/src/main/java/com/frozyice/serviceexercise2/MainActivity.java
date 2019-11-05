@@ -12,17 +12,20 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private static Random rand = new Random();
+    private FiveSecService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        service = new FiveSecService();
     }
 
     public void onStartService(View view) {
-        Intent intent = new Intent (this, FiveSecService.class);
-        //intent.putExtra("todo", 100000000L);
-        startService(intent);
+        //Intent intent = new Intent (this, FiveSecService.class);
+
+        //startService(intent);
+        service.start();
     }
 
     public void onChangeColor(View view) {

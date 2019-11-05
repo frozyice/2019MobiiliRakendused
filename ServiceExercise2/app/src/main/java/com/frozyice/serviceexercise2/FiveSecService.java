@@ -1,38 +1,45 @@
 package com.frozyice.serviceexercise2;
 
 import android.app.IntentService;
+import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class FiveSecService extends IntentService {
+public class FiveSecService extends Service {
 
-    public FiveSecService() {
-        super("FiveSecService");
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
-    private Handler handler;
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        handler = new Handler();
-        return super.onStartCommand(intent, flags, startId);
+    public void start() {
+        Thread thread = new Thread(new Toaster());
+        thread.start();
     }
 
-    @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(getApplicationContext(), "import finished", Toast.LENGTH_SHORT).show();
+    private class Toaster implements Runnable {
+        @Override
+        public void run() {
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
+            //Toast.makeText(getApplicationContext(),"Your message",Toast.LENGTH_LONG).show();
+
+        }
     }
 }
+
+/*
+    public void run() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();*/
