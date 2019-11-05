@@ -22,104 +22,101 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
-    private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
-    private static final int MY_PERMISSIONS_REQUEST_READ_CALL_LOG = 0;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 0;
 
     Context context;
-    BroadcastReceiver updateUIReciver;
+    BroadcastReceiver Reciver;
     String phoneNumber;
 
     private ListView listView;
     private List<String> phonenumbersList;
 
-    private int tempIndex = 0;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context = this;
+
         listView = findViewById(R.id.ListView);
         phonenumbersList = new ArrayList<>();
+        context = this;
+
+        checkAndRequestPermissions();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("service.to.activity.transfer");
-        updateUIReciver = new BroadcastReceiver() {
+        Reciver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent != null) {
-                    Toast.makeText(context, intent.getStringExtra("number"), Toast.LENGTH_LONG).show();
+
                     if (intent.getStringExtra("number")!=null)
                     {
+                        Toast.makeText(context, intent.getStringExtra("number"), Toast.LENGTH_LONG).show();
 
-                        //tempIndex++;
                         phoneNumber=intent.getStringExtra("number");
-                        SmsManager smgr = SmsManager.getDefault();
-                        smgr.sendTextMessage(phoneNumber,null,"added to queue",null,null);
-                        //phoneNumber=phoneNumber + " :"+String.valueOf(tempIndex);
-                        phonenumbersList.add(phoneNumber);
-
-                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
-                        listView.setAdapter(adapter);
-
-
+                        //if isAcceptingNewPeople == true
+                        sendSms(phoneNumber,"added to queue");
+                        addToList(phoneNumber);
+                        //else
+                        //sendSms(phoneNumber,"not accepting");
                     }
                 }
-
             }
-
-
         };
-        registerReceiver(updateUIReciver, filter);
+        registerReceiver(Reciver, filter);
+    }
 
-        //send SMS permission
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.SEND_SMS)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.SEND_SMS},
-                        MY_PERMISSIONS_REQUEST_SEND_SMS);
-            }
+
+
+
+    private boolean checkAndRequestPermissions() {
+        int sendSmsPremission = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
+        int readPhoneState = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+        int readCallLog = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (sendSmsPremission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.SEND_SMS);
+        }
+        if (readPhoneState != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
+        }
+        if (readCallLog != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_CALL_LOG);
         }
 
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_PHONE_STATE)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_PHONE_STATE},
-                        MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
-            }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
         }
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CALL_LOG)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_CALL_LOG)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_CALL_LOG},
-                        MY_PERMISSIONS_REQUEST_READ_CALL_LOG);
-            }
-        }
-
-
+        return true;
     }
 
     public void tempAction(View view) {
-        SmsManager smgr = SmsManager.getDefault();
-        smgr.sendTextMessage(phonenumbersList.get(0),null,"You may enter",null,null);
+        sendSms(phonenumbersList.get(0),"You may enter");
+        removeFromList();
+    }
+
+    private void removeFromList() {
         phonenumbersList.remove(0);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
         listView.setAdapter(adapter);
     }
+
+    private void addToList(String phoneNumber) {
+        phonenumbersList.add(phoneNumber);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
+        listView.setAdapter(adapter);
+    }
+
+    private void sendSms(String phoneNumber, String message) {
+        SmsManager smgr = SmsManager.getDefault();
+        smgr.sendTextMessage(phoneNumber,null,message,null,null);
+    }
+
 
 }
