@@ -5,10 +5,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +21,27 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
     private static final int MY_PERMISSIONS_REQUEST_READ_CALL_LOG = 0;
 
+    Context context;
+    BroadcastReceiver updateUIReciver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("service.to.activity.transfer");
+        updateUIReciver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent != null)
+                    Toast.makeText(context, intent.getStringExtra("number"), Toast.LENGTH_LONG).show();
+            }
+
+
+        };
+        registerReceiver(updateUIReciver, filter);
 
         //send SMS permission
         if (ContextCompat.checkSelfPermission(this,
@@ -66,7 +88,4 @@ public class MainActivity extends AppCompatActivity {
         smgr.sendTextMessage("+37259020124",null,"testmsg",null,null);
     }
 
-    public void setVar(){
-
-    }
 }
