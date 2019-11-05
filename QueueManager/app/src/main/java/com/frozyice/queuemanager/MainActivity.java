@@ -13,6 +13,8 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+    private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
+    private static final int MY_PERMISSIONS_REQUEST_READ_CALL_LOG = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,40 @@ public class MainActivity extends AppCompatActivity {
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
             }
         }
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_PHONE_STATE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_PHONE_STATE},
+                        MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+            }
+        }
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CALL_LOG)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_CALL_LOG)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_CALL_LOG},
+                        MY_PERMISSIONS_REQUEST_READ_CALL_LOG);
+            }
+        }
+
+
     }
 
     public void tempAction(View view) {
         SmsManager smgr = SmsManager.getDefault();
         smgr.sendTextMessage("+37259020124",null,"testmsg",null,null);
+    }
+
+    public void setVar(){
+
     }
 }
