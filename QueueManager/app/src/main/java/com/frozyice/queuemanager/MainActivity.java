@@ -13,7 +13,12 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,20 +28,46 @@ public class MainActivity extends AppCompatActivity {
 
     Context context;
     BroadcastReceiver updateUIReciver;
+    String phoneNumber;
+
+    private ListView listView;
+    private List<String> phonenumbersList;
+
+    private int tempIndex = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+        listView = findViewById(R.id.ListView);
+        phonenumbersList = new ArrayList<>();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("service.to.activity.transfer");
         updateUIReciver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (intent != null)
+                if (intent != null) {
                     Toast.makeText(context, intent.getStringExtra("number"), Toast.LENGTH_LONG).show();
+                    if (intent.getStringExtra("number")!=null)
+                    {
+
+                        //tempIndex++;
+                        phoneNumber=intent.getStringExtra("number");
+                        SmsManager smgr = SmsManager.getDefault();
+                        smgr.sendTextMessage(phoneNumber,null,"added to queue",null,null);
+                        //phoneNumber=phoneNumber + " :"+String.valueOf(tempIndex);
+                        phonenumbersList.add(phoneNumber);
+
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
+                        listView.setAdapter(adapter);
+
+
+                    }
+                }
+
             }
 
 
@@ -85,7 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void tempAction(View view) {
         SmsManager smgr = SmsManager.getDefault();
-        smgr.sendTextMessage("+37259020124",null,"testmsg",null,null);
+        smgr.sendTextMessage(phonenumbersList.get(0),null,"You may enter",null,null);
+        phonenumbersList.remove(0);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
+        listView.setAdapter(adapter);
     }
 
 }
