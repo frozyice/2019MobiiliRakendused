@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private List<String> phonenumbersList;
     String currentPhonenumber;
     private TextView textViewCurrent;
-
+    private ToggleButton toggleButton;
     boolean isOpen = true;
-
-
-
 
 
     @Override
@@ -48,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        toggleButton = findViewById(R.id.toggleButton);
         listView = findViewById(R.id.ListView);
         textViewCurrent = findViewById(R.id.textViewCurrent);
         phonenumbersList = new ArrayList<>();
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (intent.getStringExtra("number")!=null)
                     {
-                        Toast.makeText(context, intent.getStringExtra("number")+ "added to queue!", Toast.LENGTH_LONG).show();
+
 
                         phoneNumber=intent.getStringExtra("number");
                         //if isAcceptingNewPeople == true
@@ -84,19 +83,23 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean checkAndRequestPermissions() {
         int sendSmsPremission = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
-        int readPhoneState = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
-        int readCallLog = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG);
+        int readPhoneStatePremission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+        int readCallLogPremission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG);
+        int callPhonePremission = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
 
         List<String> listPermissionsNeeded = new ArrayList<>();
 
         if (sendSmsPremission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.SEND_SMS);
         }
-        if (readPhoneState != PackageManager.PERMISSION_GRANTED) {
+        if (readPhoneStatePremission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
         }
-        if (readCallLog != PackageManager.PERMISSION_GRANTED) {
+        if (readCallLogPremission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.READ_CALL_LOG);
+        }
+        if (callPhonePremission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CALL_PHONE);
         }
 
         if (!listPermissionsNeeded.isEmpty()) {
@@ -113,14 +116,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addToList(String phoneNumber) {
-        //if !contains
-        if (!phonenumbersList.contains(phoneNumber)) {
+
+        //if (!phonenumbersList.contains(phoneNumber)) {
             phonenumbersList.add(phoneNumber);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
             listView.setAdapter(adapter);
-            sendSms(phoneNumber,"added to queue");
-        }
-        else sendSms(phoneNumber,"Already in list");
+            Toast.makeText(context, phoneNumber+ " added to queue!", Toast.LENGTH_LONG).show();
+            sendSms(phoneNumber,"Added to queue! There are "+ String.valueOf(phonenumbersList.size()-1)+ " people before You.");
+        //}
+        //else sendSms(phoneNumber,"Already in queue! Keep Calm!");
     }
 
 
@@ -134,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     public void onNext(View view) {
 
         if (!phonenumbersList.isEmpty()) {
-            sendSms(phonenumbersList.get(0), "You may enter.");
+            sendSms(phonenumbersList.get(0), "Your up! It is your turn now!");
             Toast.makeText(context, "SMS sent!", Toast.LENGTH_LONG).show();
             currentPhonenumber = phonenumbersList.get(0);
             textViewCurrent.setText("Current person: " + currentPhonenumber);
@@ -147,17 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onRecall(View view) {
         if (currentPhonenumber!=null) {
-            sendSms(currentPhonenumber, "You may enter.");
+            sendSms(currentPhonenumber, "Your up! It is your turn now!");
             Toast.makeText(context, "SMS sent!", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void onSettings(View view) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        intent.putExtra("isOpen", "false");
-        startActivity(intent);
-
-    }
 
 
 }
