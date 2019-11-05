@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+
+
     private void sendSms(String phoneNumber, String message) {
         SmsManager smgr = SmsManager.getDefault();
         smgr.sendTextMessage(phoneNumber,null,message,null,null);
