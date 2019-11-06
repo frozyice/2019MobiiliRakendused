@@ -117,14 +117,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void addToList(String phoneNumber) {
 
-        //if (!phonenumbersList.contains(phoneNumber)) {
+        if (!phonenumbersList.contains(phoneNumber)) {
             phonenumbersList.add(phoneNumber);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, phonenumbersList);
             listView.setAdapter(adapter);
             Toast.makeText(context, phoneNumber+ " added to queue!", Toast.LENGTH_LONG).show();
             sendSms(phoneNumber,"Added to queue! There are "+ String.valueOf(phonenumbersList.size()-1)+ " people before You.");
-        //}
-        //else sendSms(phoneNumber,"Already in queue! Keep Calm!");
+        }
+        else sendSms(phoneNumber,"Already in queue! Keep Calm!");
     }
 
 

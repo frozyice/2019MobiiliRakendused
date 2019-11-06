@@ -1,45 +1,37 @@
 package com.frozyice.serviceexercise2;
 
 import android.app.IntentService;
-import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.IBinder;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-public class FiveSecService extends Service {
+public class FiveSecService extends IntentService {
+    private Handler handler;
 
-    @Nullable
+
+    public FiveSecService() {
+        super("service");
+        handler = new Handler();
+    }
+
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+    protected void onHandleIntent(Intent intent) {
 
-    public void start() {
-        Thread thread = new Thread(new Toaster());
-        thread.start();
-    }
 
-    private class Toaster implements Runnable {
-        @Override
-        public void run() {
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            //Toast.makeText(getApplicationContext(),"Your message",Toast.LENGTH_LONG).show();
-
-        }
-    }
-}
-
-/*
-    public void run() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();*/
+            e.printStackTrace();
+        }
+
+
+        String message = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss", Locale.getDefault()).format(new Date());
+
+        Toaster toaster = new Toaster(this);
+        toaster.ShowToast(message);
+
+    }
+}
